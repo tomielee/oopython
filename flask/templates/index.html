@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+
+<div class="container" role="main">
+    <div class="page-header">
+        <h1>Välkommen till min första app-sida</h1>
+        <h3>Nu inkluderas headern och footern med hjälp av Jinja2</h3>
+    </div>
+    <div class="article">
+        <p>Denna sidan är en utvecklingssida i kursen oopython som ges på <a href="https://bth.se/">bth.se</a></p>
+
+        <img src="{{ url_for('static',filename='img/ocean.jpeg') }}">
+    </div>
+</div>
+
+{% include 'footer.html' %}

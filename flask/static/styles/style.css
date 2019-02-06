@@ -1,0 +1,46 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.navbar-brand {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.navbar,
+.navbar-inverse,
+.navbar-fixed-top {
+    background-color: #21161e;
+}
+
+.navbar-inverse {
+    background-color: #21161e;
+}
+
+.container {
+    width: 700px;
+}
+
+img {
+    width: 75%;
+    float: middle;
+    height: auto;
+}

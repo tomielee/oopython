@@ -1,0 +1,22 @@
+{% include 'header.html' %}
+
+<div class="container" role="about">
+    <div class="page-header">
+        <h1>ABOUT.</h1>
+        <p>Jag heter {{ name }} {{ sir }}<p>
+
+        <h3>Detta är alltså utvecklingssidan i kursen oopython.</h3>
+        </div>
+    <div class="article">
+
+        <p>Syftet med kursen är visa på hur vi kan skapa webbsidor med python. Detta görs genom att bland annat skapa klasser som vi skapar nya objekt med. Objektens attribut och metoder används för att sedan renderas på hemsidan.
+        Själva webbplatsens grund templates är vanlig HTML. <a href="http://flask.pocoo.org/">Flask </a> används för att rendera sidan och
+        <a href="http://jinja.pocoo.org/">Jinja 2</a> används för att kunna skicka in olika objekt/variabler.
+        </p>
+        <p>
+            <img src="{{ url_for('static',filename=img) }}" alt="me-pic, but not really">
+            </p>
+    </div>
+</div>
+
+{% include 'footer.html' %}
