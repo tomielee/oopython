@@ -1,0 +1,43 @@
+.start_btn {
+    font-size: 25px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+}
+
+p {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to bottom, red 0, pink 100%);
+}
+
+.btn-primary:hover {
+    background-color: pink;
+}
+
+.btn-success {
+    background-image: linear-gradient(to bottom, pink 0, red 100%);
+}
+
+.btn-success:hover {
+    background-color: red;
+}

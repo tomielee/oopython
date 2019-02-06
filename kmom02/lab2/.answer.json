@@ -1,0 +1,22 @@
+{
+    "details": "Generated for jelf18 at 2019-01-28 12:45:49.",
+    "key": "28944054638d34cb1901552387ef3d42",
+    "summary": {
+        "questions": 4,
+        "points": 8,
+        "pass": 8,
+        "passdistinct": 8
+    },
+    "points": {
+        "1.1": 2,
+        "1.2": 2,
+        "1.3": 2,
+        "1.4": 2
+    },
+    "answers": {
+        "1.1": "502075-3392",
+        "1.2": "Name: Badgerlock SSN: 502075-3392 Address: Katar Skane Commonwealth",
+        "1.3": "Name: Buster SSN: 516518-3442 Address: Renere Blekinge Six Duchies Courses: design, python, webapp",
+        "1.4": 2.5
+    }
+}

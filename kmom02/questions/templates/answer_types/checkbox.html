@@ -1,0 +1,6 @@
+{% for alternative in question.get_alternatives() %}
+    <div class="checkbox">
+     <label><input type="checkbox" value="{{alternative}}" name="answer">{{alternative}}</label>
+    </div>
+{% endfor %}
+    (I know you can check more answers, but since I didn't do the extra in this assignment you only get one point... if you check the correct ONE hint hint..)  

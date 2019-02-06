@@ -1,0 +1,5 @@
+/* Klassen row gör sitt bästa för att innehållet ska hamna på en rad. Klassen col-md-3 tar upp 3 kolumner av 12. Klassen col-md-offset-1 puttar elementet 1 kolumn åt höger. */
+
+.page-header {
+    margin: 70px 0 20px;
+}
