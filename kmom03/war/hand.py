@@ -16,5 +16,4 @@ class Hand():
 
     def __repr__(self):
         """return number of cards"""
-        # return "{name} has {num} cards in hand.".format(name=self.name, num=len(self.cards))
-        return "the cards {cards}.".format(cards=self.cards)
+        return "{name} has: {num} cards in hand.".format(name=self.name, num=len(self.cards))
