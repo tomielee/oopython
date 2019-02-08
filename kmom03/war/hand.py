@@ -3,7 +3,6 @@
     Player hand.
     Kmom03
 """
-from deck import Deck
 
 class Hand():
     """create player hand"""
@@ -16,4 +15,5 @@ class Hand():
 
     def __repr__(self):
         """return number of cards"""
-        return "{name} has: {num} cards in hand.".format(name=self.name, num=len(self.cards))
+        return "{name} has: {num} cards in hand.".\
+            format(name=self.name, num=len(self.cards))

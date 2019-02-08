@@ -3,7 +3,7 @@
     Basic functions for re-use
 """
 
-from random import randint, random, shuffle
+from random import randint, shuffle
 
 
 def rand_int(minval, maxval):
