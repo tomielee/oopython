@@ -15,8 +15,6 @@ class War():
         """war object - a game set"""
         self.playing_cards = []
         self.create_player()
-        self.play_game()
-
 
     def create_player(self):
         """players with cards from Hand"""
@@ -26,6 +24,45 @@ class War():
 
         self.player1 = Hand("Player 1", cards1)
         self.player2 = Hand("Player 2", cards2)
+
+    def play_game(self):
+        """play game"""
+
+        while self.if_card_in_hand():
+            print("> {name} draws {card}\n".format(name=self.player1.name,\
+                card=self.player1.cards[0]))
+            self.playing_cards.append(self.player1.cards[0])
+
+            input("Press any key to continue.\n")
+
+            print("> {name} draws {card}\n".format(name=self.player2.name, \
+                card=self.player2.cards[0]))
+            self.playing_cards.append(self.player2.cards[0])
+
+
+            # if suits are the same, check value of card to set winner.
+            if self.player1.cards[0].suit == self.player2.cards[0].suit:
+                self.check_card(self.player1.cards[0].value, \
+                self.player2.cards[0].value)
+            elif self.player2.cards[0].suit == self.player1.cards[0].suit:
+                self.check_card(self.player1.cards[0].value, \
+                self.player2.cards[0].value)
+
+            input("Press any key to continue.\n")
+            self.player1.cards.pop(0)
+            self.player2.cards.pop(0)
+
+        self.winner(len(self.player1.cards), len(self.player2.cards))
+
+    @staticmethod
+    def winner(len1, len2):
+        """return winner"""
+        if len1 == 0 and len2 == 0:
+            input(">>>>No winner. \n>>>>Press any key to end game.")
+        elif len1 == 0:
+            input(">>>>Player 2 wins!!! \n>>>>Press any key to end game.")
+        elif len2 == 0:
+            input(">>>>Player 1 wins!!! \n>>>>Press any key to end game.")
 
     def check_card(self, value1, value2):
         """check values of cards"""
@@ -68,49 +105,13 @@ class War():
             return 14
 
 
-    def play_game(self):
-        """play game"""
-
-        while self.if_card_in_hand():
-            print("> {name} draws {card}\n".format(name=self.player1.name,\
-                card=self.player1.cards[0]))
-            self.playing_cards.append(self.player1.cards[0])
-
-            input("Press any key to continue.\n")
-
-            print("> {name} draws {card}\n".format(name=self.player2.name, \
-                card=self.player2.cards[0]))
-            self.playing_cards.append(self.player2.cards[0])
-
-
-            # if suits are the same, check value of card to set winner.
-            if self.player1.cards[0].suit == self.player2.cards[0].suit:
-                self.check_card(self.player1.cards[0].value, \
-                self.player2.cards[0].value)
-            elif self.player2.cards[0].suit == self.player1.cards[0].suit:
-                self.check_card(self.player1.cards[0].value, \
-                self.player2.cards[0].value)
-
-            input("Press any key to continue.\n")
-            self.player1.cards.pop(0)
-            self.player2.cards.pop(0)
-
-        self.winner(len(self.player1.cards), len(self.player2.cards))
-
-    @staticmethod
-    def winner(len1, len2):
-        """return winner"""
-        if len1 == 0 and len2 == 0:
-            input(">>>>No winner. \n>>>>Press any key to end game.")
-        elif len1 == 0:
-            input(">>>>Player 2 wins!!! \n>>>>Press any key to end game.")
-        elif len2 == 0:
-            input(">>>>Player 1 wins!!! \n>>>>Press any key to end game.")
-
-
     def if_card_in_hand(self):
         """return true if there are cards in hand"""
         return bool((len(self.player1.cards) > 0) and \
             (len(self.player2.cards) > 0))
 
-game = War()
+# game = War()
+
+if __name__ == '__main__':
+    game = War()
+    game.play_game()

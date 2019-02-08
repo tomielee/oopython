@@ -13,13 +13,9 @@ class Deck():
         """constructor for deck object"""
 
         self.deck = []
-        # self.values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'knight', \
-        #     'queen', 'king', 'ace']
-        self.values = [9, 10, 'knight', \
+        self.values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'knight', \
             'queen', 'king', 'ace']
         self.suits = ['diamonds', 'clubs', 'hearts', 'spades']
-        # self.values = [1, 2, 3]
-        # self.suits = ['A', 'B']
 
         self.create_deck()
 
@@ -33,6 +29,3 @@ class Deck():
         """return shuffled list, shuffled deck"""
         shuffle(self.deck)
         return self.deck
-
-# newDeck = Deck()
-# print(shuff_list(newDeck.deck))
