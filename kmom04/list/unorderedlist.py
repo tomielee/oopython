@@ -4,9 +4,9 @@
     Kmom04, assignment 2.
 """
 from node import Node
-from error import OutOfIndex
-from error import AttError
-from error import NoValue
+from errors import OutOfIndex
+from errors import AttError
+from errors import NoValue
 
 class UnorderedList():
     """listobject to handle unorders lists"""

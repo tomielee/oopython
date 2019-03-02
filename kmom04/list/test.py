@@ -5,9 +5,9 @@
 """
 import unittest
 from unorderedlist import UnorderedList
-from error import NoValue
-from error import AttError
-from error import OutOfIndex
+from errors import NoValue
+from errors import AttError
+from errors import OutOfIndex
 
 class TestEx(unittest.TestCase):
     """test exeptions in method in undorderlist.py"""

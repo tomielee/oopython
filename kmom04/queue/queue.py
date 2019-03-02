@@ -34,15 +34,20 @@ class Queue():
     def dequeue(self):
         """2. remove next in line with FIFO. First in First out."""
 
-        prev = None
         current = self.head
-        while current.get_next() != None:
-            prev = current
-            current = current.get_next()
+        prev = None
 
-        prev.set_next(current.get_next())
+        if current:
+            while current.get_next() != None:
+                prev = current
+                current = current.get_next()
 
-        current = None
+        if prev:
+            prev.set_next(current.get_next())
+            current = None
+            return True
+
+        self.head = None
 
         # Lite notes och eget innan try catch i Handle() i main.
         # if current:

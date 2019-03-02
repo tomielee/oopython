@@ -4,10 +4,10 @@
     Kmom04
 """
 from unorderedlist import UnorderedList
-from error import OutOfIndex
-from error import AttError
-from error import WrongType
-from error import NoValue
+from errors import OutOfIndex
+from errors import AttError
+from errors import WrongType
+from errors import NoValue
 
 
 # linked_list = Queue()
