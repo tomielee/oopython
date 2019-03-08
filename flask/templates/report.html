@@ -43,7 +43,7 @@
     <a href="#top">Upp > </a>
     <h3 id="kmom03">Kmom03</h3>
     <p>Hade aldrig hört talas om unittester eller UML tidigare. Mer än den lilla bekantskapet med de statiska diagrammen klassdiagram från kmom02. Jag tror det är jättebra med både UML och untittester. Har tidigare försökt strukturera upp koden innan jag började koda, men har inte riktigt hittat en bra struktur för det. Har kollat flera videos och olika andra källor för att förstå UML och strukturen för att rita upp relationsdiagram, men jag har inte riktigt förstått. </p>
-    
+
     <p>Accociation, där klass A innehåller (Has-a) klass B och där klass B överlever även om klass A inte finns. I detta fall t.ex. Deck innehåller Card. Även om Deck försvinner så kan Card användas/finnas. Även om den inte fyller någon funktion utan A. Till skillnad från Aggretions relation som mellan Hand och Card. Hand innehåller Card, och om Card försvinner kan inte Hand överleva. </p>
 
     <p>Får en känsla av att jag inte implementerar själva OO kodning. Just nu är det som att jag fortfarande tänker i form av funktion och därmed inte nyttjar OO. Tänkte på det när jag skulle skriva unittestet då jag bara tänkte på vilka funktioner jag kunde kalla på och få vilket resultat. Skulle vilja öva på grundläggande nivå, men vet inte riktigt hur det skulle göras.</p>
@@ -52,14 +52,34 @@
     <a href="#top">Upp > </a>
 
     <h3 id="kmom04">Kmom04</h3>
-    <p>Text kommer allt eftersom </p>
+    <p>Spännande uppgift! Jag har inte jobbat med denna sortens datastrukturer tidigare. Tror jag inte, om vi har det så har jag inte varit medveten om det. På ett sätt har det varit logiskt att förstå hur det fungerar och varför det är effektivt när vi lägger till och tar bort element. Men samtidigt är det en hjärngympa som ger mig kramp ibland och jag tappar tråden. Så ja valde att bara göra envägslistor.</p>
+    <p>Nu i efterhand när allt är klart så skulle jag kanske gjort annorlunda. För det första om jag gjort flervägslista, tror jag att jag skulle slippa prev som variabel när vi ska ta bort objekt utan kan peka om objekt direkt? Current.prev skulle peka på currekt.next och så skulle jag kunna ta bort current. Vidare så sas det i en va videosen att det var att föredra andra metoder än linked list när vi vill nå element på en viss index. Men nu används samma princip rakt genom klassen.</p>
+    <p>En array är en lista som lagrar element på specifika platser. Har vi en array på 5 platser och ska lägga in en på index 0 så flyttas samtliga 5 element, och alla får nya platser. I en linked list har vi element som pekar på varandra och ska vi lägga in ett nytt element så länkar vi bara om elementet innan och det följande. Allt annat ligger kvar på sina platser. Det går att använda dessa listor ihop men det är då viktigt att inte hårdkoda index.</p>
+    <p>Till en början hade jag gjort min Handler() med en enda metod def menu(self). Sen skapade jag en enorm funktion i funktion vilket ledde till too many branches och too many statments. Fattade sen att jag skulle skapa metoder för att lättare hantera och se vad som sker var. Mina exceptions: NoValue, AttError och OutOfIndex. De är inte speciellt snygga eller vettigt gjorda. Jag ville ha en exception som skulle fångas om user skrev in ett index som inte fanns. Samtidigt som jag hakade upp mig på själva inbyggda error som var att AttributeError för att värdet inte fanns. Just nu kastas exceptions genom att välja fel index eller skriva in ett värde som inte finns i listan.</p>
+    <p>Ligger efter i arbetet så jag har inte gjort några extrauppgifter. Det var förövrigt en bra uppgift. Som tillåter en att fundera och göra fel och göra rätt. Det är enkelt att testa. Bra kurslitteratur och bra upplägg. </p>
+
+    <a href="#top">Upp > </a>
+
     <a href="#top">Upp > </a>
     <h3 id="kmom05">Kmom05</h3>
-    <p>Text kommer allt eftersom </p>
+    <p>Denna uppgift var enligt mig ett väldigt bra exempel som exemplifierar att det finns många sätt att lösa en uppgift på. Och hur något så enkelt kan bli så krångligt i huvudet. Rekursion som egentligen är ett sätt att förenkla något som är väldigt komplext och evighetsloopande, var (och är till en viss del fortfarande) väldigt krångligt. Behövde rita upp en del för att förstå den "inre loopen". Men det räckte med att göra loppen två gånger och antingen klaffade det eller så gjorde det inte det. Behövde upprepa detta ett par gånger. Det blev kanske lättare att plocka upp tråden när jag tappade den. Men det sitter inte riktigt ännu. Videon <a href="https://www.youtube.com/watch?v=Mv9NEXX1VHc">"What on Earth is Recursion" </a> tyckte jag beskrev detta väldigt bra.</p>
+    <p>Det jag mer specifikt dividerade kring var de magiska metoderna. Såg på gitter att uppgiften kunde lösas med att antingen använda magiska metoderna eller att använda de klassmetoder som var klara (i det fall en inte gjort extrauppgiften i kmom04). Jag tänkte först att det kanske var lättare att göra magiska metoder men insåg att jag inte riktigt förstod hur detta skulle göras - kan inte förstå skillnaden på get och __getitem__. Så jag löste sort genom att använda de färdiga metoder från objektklassen, och alltså inte använda tupler.</p>
+    <p>Till en början tänkte jag ta min länkade lista och göra om den till en array för att sedan kunna sortera listan. Men jag funderade på om det verkligen var värt det i tid - för datan inte för mig. Jag kunde dock inte avgöra vad som skulle ta mest tid. Precis som jag inte riktigt kan förstå  var stora O är i sammanhanget. Jag förstår lite av det matematiska. Att det beskriver funktioner som närmar sig ett visst värde eller ett värde vi inte kan nå. Men att i datasammanhang handlar det om att det beskriver tiden att utföra en viss algoritm.   </p>
+    <p>Det som är klurigt i detta kursmoment är att jag ändå kan förstå att det finns en ganska stor poäng i att kunna avgöra när vilken metod ska används när. Och för att förstå det behöver jag nog också verkligen förstå vad som är vad i sammanhanget. Men där är jag inte riktigt. Har dock inte hunnit kolla på videoklippet kring "plugga programmering vs att jobba med programmering". Ska kika på det.</p>
+    <p>Uppgifterna var enklare. Jag gillar att laba och det skulle kunna finnas några extra - som inte behöver göras utan som bara just är extra. Bra varierat material!</p>
     <a href="#top">Upp > </a>
+
+
     <h3 id="kmom06">Kmom06</h3>
-    <p>Text kommer allt eftersom </p>
+    <p>Ett binärt sökträd är en datastruktur som lagrar datan med dess nycklar. Nycklarna läggs in i ordningen de läggs i trädet och får i sin tur en plats i trädet beroende på storlek. Varje plats, node, har max två barn där det ena är mindre och det andra är större. Det kan vara effektivt att använda bst då vi snabbt kan ignorera halva trädet, och sen halva det osv. Men i det fall datan är inlagd i ineffektiv ordning - så kan det sluta med att bst fungerar linjärt och därmed tar jättelång tid. </p>
+    <p>Att traversera genom ett träd handlar om att gå genom samtliga noder i ett träd. Inorder, Preorder och Postorder talar bara om i vilken ordning vi vill göra det vi ska göra. I detta fall gjorde vi en print. Inorder gör att vi får en storleksordning på våra nycklar. Preorder får vi ordningen root, vänstra nivåerna, högra nivåerna. Vill vi t.ex bara traversera genom värden lägre än root så kan vi använda preorder. </p>
+    <p>Hashtable använder sig av hashfunktioner för för att ge nycklar en plats i en slot, alltså med hjälp av en funktion får en nyckel sitt index i tabellen. I bästa fall är tidsåtgången linjär O(1). Det beror helt på hur vi skapar våra funktioner och hur vi hanterar krockar. </p>
+    <p>I ärlighetens namn kan jag inte riktigt resonera kring vilken datastruktur är bra till vad. Det går att gissa sig fram lite men det är väldigt mycket gissningar. Skulle vara intressant och roligt att bara sitta och diskutera detta!  </p>
+    <p>Ja, det gick relativt bra. Använde mig av visulago och skapade träd och testade att ta bort olika värden. När jag skrivit väldigt många rader kod fick jag ju lov att städa och resonera kring och banta koden. I slutet fick jag inte bort sista värdet och fick error på test_del. Någonstans tappade jag bort vad min remove skulle göra och det var ju att ta bort en node. Citat: "du ska ta bort key och value för den noden som har rätt key.
+    Det är bara det att du vill spara undan value i en annan variabel så du kan returnera det från metoden när den är klar." . Hela koden validerade och allt var klart men just denna bit hade lämnat en stor lucka i mitt huvud. </p>
+    <p>Python är fortfarande det roligaste språket och även uppgifterna har varit toppen. Det går ändå att förstå och jag skulle vilja dyka ner mer i detta än vad det finns tid för. Tycker det finns en god balans i förklarade i text och föreläsningar i relation till hur extremt mycket det finns att fortsätta lära sig. </p>
     <a href="#top">Upp > </a>
+    
     <h3 id="kmom07-10">Kmom07-10</h3>
     <p>Text kommer allt eftersom </p>
     <a href="#top">Upp > </a>
