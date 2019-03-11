@@ -23,10 +23,54 @@ class SpellChecker():
         self.set_new_dict("words.txt")
         self.show_menu()
 
+
+    def handle_search_word(self):
+        """
+            MENU 1. SEARCH WORD
+            word: user input
+            return: bool. True if word exists in dictionary.
+        """
+        word = input("search for: ")
+
+        if self.d.search_word(word.lower().strip()):
+            print('your word "{}"" is in the dictionary.'.format(word))
+        else:
+            print('could not find your word "{}"'.format(word))
+
+    def handle_start_with(self):
+        """
+            MENU 2. SEARCH WORDS WITH PREFIX
+            prefix: user input
+            return: a list of 10 words
+        """
+        prefix = ""
+
+        while prefix[-4:] != "quit":
+
+            prefix = prefix + input("search for: " + prefix)
+
+            words = self.d.start_with(prefix.lower().strip())
+            if words:
+                print('\nsearch result, 10 words starting with "{}" '.format(prefix.upper()))
+                for word in words:
+                    print(word)
+            else:
+                print('there are now words starting with  "{}"'.format(prefix.upper()))
+                break
+
+    def handle_set_new_dict(self):
+        """
+             MENU 3. CHANGE DICTIONARY
+             choice = user input - filename
+        """
+        print("Enter the filename:")
+        print("Available are: dictionary.txt and tiny_dictionary.txt")
+        self.set_new_dict(input("enter the name: "))
+
     def set_new_dict(self, choice):
         """
-            MENU 4. CHANGE WORDS
-            use a new file
+            MENU 3. CHANGE DICTIONARY
+            choice = user input - filename
         """
         self.d = None
         self.d = Trie()
@@ -34,7 +78,7 @@ class SpellChecker():
         content = self._read_file(choice) #hämtar innehållet
         words = content.split("\n") #skapar en lista med ord
         for word in words:
-            print('new word: {}'.format(word))
+            # print('new word: {}'.format(word))
             self.d.add(word)
 
     @staticmethod
@@ -51,41 +95,31 @@ class SpellChecker():
     @staticmethod
     def _open_file(choice):
         """
-        open file. nothing else.
+            open file. nothing else.
         """
-        value = 'No'
         try:
             fh = open(choice)
             fh.close()
-            value = 'Yes'
         except FileNotFoundError:
             print('filen finns inte')
 
         return value
 
-    def handle_search_word(self):
+    def handle_print(self):
         """
-            return print if user input is in wordlist
+            MENU 4. PRINT ALL WORDS
+            Print: list of all words.
         """
-        word = input("search for: ")
+        words_to_print = self.d.print_nodes()
 
-        if self.d.search_word(word.lower().strip()):
-            print('ordet: {} fanns i ordlistan!'.format(word))
-        else:
-            print('ordet: {} fanns inte!'.format(word))
-
-    def handle_start_with(self):
-        """
-            return 10 words starts with prefix
-            prefix = user input
-        """
-        prefix = input("search for: ")
-
-        while self.d.search_word(prefix.lower().strip()):
-
+        print("PRINT: \n")
+        for word in words_to_print:
+            print(word)
 
     def handle_input(self, choice):
-        """handle user choice from menu"""
+        """
+            handle user choice from menu
+        """
 
         if choice == "1":
             self.handle_search_word()
@@ -94,13 +128,10 @@ class SpellChecker():
             self.handle_start_with()
 
         elif choice == "3":
-            print("du valde 3 - välj vilken fil du vill lägga till")
-            self.set_new_dict(input("Vilken fil: "))
-            # self.set_new_dict("words.txt")
+            self.handle_set_new_dict()
 
         elif choice == "4":
-            print("du ville skriva ut: \n")
-            print(self.d.print_nodes())
+            self.handle_print()
 
         else:
             print("invalid choice")

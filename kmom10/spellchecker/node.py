@@ -14,21 +14,20 @@ class TrieNode():
         self.children = {}
         self.completeword = False
 
-    # def get_letter(self):
-    #     """return letter"""
-    #     return self.letter
-    #
-    # def set_letter(self, new_letter):
-    #     """set new letter"""
-    #     self.letter = new_letter
+    def get_letter(self):
+        """return letter"""
+        return self.letter
+
+    def set_letter(self, new_letter):
+        """set new letter"""
+        self.letter = new_letter
 
     def get_list_of_children(self):
         """return children"""
         list_of_children = []
 
-        for letter in self.children.keys():
-            print(letter)
-            list_of_children.append(letter)
+        for key in self.children.keys():
+            list_of_children.append(key)
 
         return list_of_children
 
@@ -44,7 +43,4 @@ class TrieNode():
     def found_child(self, l):
         """return True if letter is found in child"""
         for child in self.children:
-            if child == l:
-                return True
-            else:
-                return False
+            return bool(child == l)

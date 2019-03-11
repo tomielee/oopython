@@ -46,49 +46,109 @@ class Trie():
             for letter in word:
                 if letter not in node.children:
                     return False
-                    break
                 node = node.children[letter]
 
             return node.completeword
 
     def start_with(self, prefix):
-        """return 10 words that starts with user prefix"""
+        """
+            return list of words starting with user prefix
+            prefix: user input
+            return: words [] a list of 10 words
+        """
 
         if self.root is None:
             raise KeyError
         else:
             node = self.root
-            for letter in prefix:
-                if letter not in node.children:
-                    return False
-                    break
-                node = node.children[letter]
 
-            
+            if self._check_prefix(prefix, node):
+                words = [] #får vara max 10
+                word = ""
+
+                for letter in prefix:
+                    for key, value in node.children.items():
+                        if letter == key:
+                            node = value
+
+                self._get_words(prefix, node, word, words)
+
+            else:
+                return False
+
+            return words
+
+
+    @staticmethod
+    def _get_words(prefix, node, word, words):
+        """traverse the node until node is complete word"""
+
+
+        # print('-----\nnodens: {}'.format(node.get_letter()))
+        # print('och nodens barn: {}'.format(node.get_list_of_children()))
+        # print('är den complete?: {}'.format(node.is_complete_word()))
+
+        if node.is_complete_word():
+            # print('\ncompleteword så här: {}'.format(prefix+word))
+            # print('first letter in word: {}'.format(word[0]))
+
+            words.append(prefix[:-1]+word+node.get_letter())
+
+
+        word = word + node.get_letter()
+        # print('word so far: {}'.format(word))
+
+        for key, value in node.children.items():
+            node = value
+            if len(words) > 10:
+                break
+            else:
+                Trie._get_words(prefix, node, word, words)
+
+
+    @staticmethod
+    def _check_prefix(prefix, node):
+        """
+            private method.
+            return True if prefix is in dictionary
+        """
+        for letter in prefix:
+            if letter not in node.children:
+                return False
+            node = node.children[letter]
+
+        return True
+
 
     def print_nodes(self):
-        """print nodes"""
+        """
+            Call method _print_nodes() for list of words.
+            Return: list of string.
+        """
         if self.root is None:
             raise KeyError
         else:
-            self._print_nodes(self.root)
+            node = self.root
+            all_words = []
+            word = ""
+            for key, value in node.children.items():
+                node = value
+                self._print_nodes(node, word, all_words)
+
+        return all_words
 
     @staticmethod
-    def _print_nodes(node):
-        """return list of word to print"""
-        list_of_words = []
-        list_of_words.append("test")
+    def _print_nodes(node, word, all_words):
+        """
+            private recursive method to create list of words.
+        """
 
-        for child in node.children.keys():
-            print(child)
-            if not node.is_complete_word():
-                print('values: {}, child: {}'.format(node.letter, child))
-                list_of_words.append(child)
-            else:
-                print('finns inte')
-                list_of_words.append(" ")
+        if node.is_complete_word():
+            all_words.append(word)
 
-        node = node.children[child]
 
-        print('list of words: {}'.format(list_of_words))
-        return list_of_words
+        word = word + node.get_letter()
+
+        for key, value in node.children.items():
+            node = value
+            Trie._print_nodes(node, word, all_words)
