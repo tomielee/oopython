@@ -45,8 +45,8 @@ def bubble_sort(n):
                     tmp = n.get(j)
                     n.set(n.get(j+1), j)
                     n.set(tmp, j+1)
-                else:
-                    raise WrongType
+    else:
+        raise WrongType
 
     return n.print_list()
 
