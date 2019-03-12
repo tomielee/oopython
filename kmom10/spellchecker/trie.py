@@ -6,6 +6,9 @@
 
 from node import TrieNode
 
+from error import SearchError
+from error import EmptyTree
+
 class Trie():
     """
         Datastructure to handle words as a trie object
@@ -17,7 +20,6 @@ class Trie():
 
     def add(self, word):
         """add a new node"""
-
         if self.root is None:
             self.root = TrieNode(word)
         else:
@@ -37,7 +39,16 @@ class Trie():
         node.completeword = True
 
     def search_word(self, word):
-        """search for a word"""
+        """
+            search for a word
+            iterate letter by letter in word
+            if found in nodes children then continue
+                node set to node.child
+            if the whole word is found and last node is completeword return True
+
+            word: user input
+            return: bool. True if word exists in dictionary.
+        """
 
         if self.root is None:
             raise KeyError
@@ -48,7 +59,19 @@ class Trie():
                     return False
                 node = node.children[letter]
 
-            return node.completeword
+            return node.is_complete_word()
+
+            # node = self.root
+            # if len(word) >= 1:
+            #     for letter in word:
+            #         if letter not in node.children:
+            #             return False
+            #         node = node.children[letter]
+            #
+            #     return node.is_complete_word()
+            # else:
+            #     raise SearchError
+
 
     def start_with(self, prefix):
         """
@@ -74,7 +97,8 @@ class Trie():
                 self._get_words(prefix, node, word, words)
 
             else:
-                return False
+                raise SearchError
+                # return False
 
             return words
 
@@ -82,7 +106,6 @@ class Trie():
     @staticmethod
     def _get_words(prefix, node, word, words):
         """traverse the node until node is complete word"""
-
 
         # print('-----\nnodens: {}'.format(node.get_letter()))
         # print('och nodens barn: {}'.format(node.get_list_of_children()))
@@ -98,7 +121,7 @@ class Trie():
         word = word + node.get_letter()
         # print('word so far: {}'.format(word))
 
-        for key, value in node.children.items():
+        for value in node.children.values():
             node = value
             if len(words) > 10:
                 break
@@ -116,7 +139,6 @@ class Trie():
             if letter not in node.children:
                 return False
             node = node.children[letter]
-
         return True
 
 
@@ -131,11 +153,15 @@ class Trie():
             node = self.root
             all_words = []
             word = ""
-            for key, value in node.children.items():
+            for value in node.children.values():
                 node = value
                 self._print_nodes(node, word, all_words)
 
-        return all_words
+        if len(all_words) <= 0:
+            raise EmptyTree
+        else:
+            return all_words
+    
 
     @staticmethod
     def _print_nodes(node, word, all_words):
@@ -143,12 +169,22 @@ class Trie():
             private recursive method to create list of words.
         """
 
+        word = word + node.get_letter()
+        # print('ordet so far {}'.format(word))
+
         if node.is_complete_word():
             all_words.append(word)
 
-
-        word = word + node.get_letter()
-
-        for key, value in node.children.items():
+        for value in node.children.values():
             node = value
             Trie._print_nodes(node, word, all_words)
+
+    def j_t(self):
+        """
+            testning things
+        """
+        if self.root is None:
+            raise KeyError
+        else:
+            node = self.root
+            return node.get_list_of_children()
